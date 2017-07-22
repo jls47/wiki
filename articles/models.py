@@ -7,7 +7,7 @@ class Article(models.Model):
     toc = models.CharField(max_length=600)
     body = models.TextField(max_length=10000000)
     categories = models.CharField(max_length=600)
-    featured = models.BooleanField(default=True)
+    featured = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
