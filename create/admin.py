@@ -2,9 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 
-from create.models import create
+from create.models import Create
 
 class CreateAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(create, CreateAdmin)
+admin.site.register(Create, CreateAdmin)

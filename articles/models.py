@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class article(models.Model):
+class Article(models.Model):
     title = models.CharField(max_length=100)
     summary = models.TextField(max_length=600)
     toc = models.CharField(max_length=600)
