@@ -5,10 +5,21 @@
     <title></title>
 </head>
 <body>
+    {%include "articles/base.html"%}
 
+    {%block content%}
     <h1>{{article.title}}</h1>
-    <hr>
+    <br>
+    <p>This article has
+        {% if article.featured %}
+            been featured!
+        {% else %}
+            a little ways to go.
+        {%endif%}
+    </p>
+    <br><br>
     <p>{{article.summary}}</p>
+    <hr>
     <br><br>
     <div class = "toc">
         <ul>
@@ -22,6 +33,6 @@
     <hr>
     <p>{{article.categories}}</p>
 
-
+    {% endblock %}
 </body>
 </html>

@@ -10,7 +10,7 @@ def about(request):
 def get_all_articles(request):
     articles = Article.objects.all()
 
-    return render(request, 'articles/seeall.html', {"data": articles, "title": "All Articles"})
+    return render(request, 'articles/seeall.html', {"articles": articles, "title": "All Articles"})
 
 def get_one_article(request, **kwargs):
     articles = Article.objects.get(pk=kwargs['pk'])
@@ -20,4 +20,4 @@ def get_one_article(request, **kwargs):
 def get_featured_articles(request):
     articles = Article.objects.filter(featured=True)
 
-    return render(request, 'articles/article.html', {"data": articles})
+    return render(request, 'articles/seeall.html', {"articles": articles, "title": "Featured"})
