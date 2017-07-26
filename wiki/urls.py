@@ -19,12 +19,14 @@ from django.contrib.auth import views as auth_views
 
 from articles.views import about, get_all_articles, get_one_article, get_featured_articles
 
+
 urlpatterns = [
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, {'template_name': 'frontpage.html'}, name='logout'),
+
     url(r'^articles/featured/', get_featured_articles),
-    url(r'^articles/one/(?P<pk>\d+)/', get_one_article),
+    url(r'^articles/(?P<pk>\d+)/', get_one_article),
     url(r'^about/', about),
     url(r'^articles/all', get_all_articles),
-    url(r'^login/$', auth_views.login, name="login"),
-    url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^admin/', admin.site.urls),
 ]

@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Activation window
+
+ACCOUNT_ACTIVATION_DAYS = 3
+
+LOGIN_REDIRECT_URL = '../articles/templates/articles/frontpage'
+
 
 # Application definition
 
@@ -38,10 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profiles',
-    'login',
-    'create',
+    'registration',
     'articles',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
