@@ -12,3 +12,6 @@ class LoginConfig(AppConfig):
 
 class CreateConfig(AppConfig):
     name = 'create'
+
+class EditConfig(AppConfig):
+    name = 'edit'

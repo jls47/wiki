@@ -19,7 +19,7 @@ from django.contrib.auth import views as auth_views
 from django.conf.urls import include
 
 
-from articles.views import about, get_all_articles, get_one_article, get_featured_articles
+from articles.views import about, get_all_articles, get_one_article, get_create_page, get_featured_articles, get_edit_page, get_talk_page
 
 
 urlpatterns = [
@@ -31,8 +31,11 @@ urlpatterns = [
         auth_views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
     url(r'^articles/featured/', get_featured_articles),
+    url(r'^articles/talk/(?P<pk>\d+)/', get_talk_page),
+    url(r'^articles/edit/(?P<pk>\d+)/', get_edit_page),
+    url(r'^articles/create/', get_create_page),
     url(r'^articles/(?P<pk>\d+)/', get_one_article),
-    url(r'^about/', include('django.contrib.flatpages.urls')),
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^articles/all', get_all_articles),
 
     url(r'^admin/', admin.site.urls),

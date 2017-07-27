@@ -9,6 +9,9 @@ class Article(models.Model):
     categories = models.CharField(max_length=600)
     featured = models.BooleanField(default=False)
 
+class Talk(models.Model):
+    discussions = models.TextField(max_length=9999999999999999999)
+
     def __str__(self):
         return self.title
 
