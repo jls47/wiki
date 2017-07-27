@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.conf.urls import include
+
 
 from articles.views import about, get_all_articles, get_one_article, get_featured_articles
 
@@ -30,7 +32,8 @@ urlpatterns = [
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
     url(r'^articles/featured/', get_featured_articles),
     url(r'^articles/(?P<pk>\d+)/', get_one_article),
-    url(r'^about/', about),
+    url(r'^about/', include('django.contrib.flatpages.urls')),
     url(r'^articles/all', get_all_articles),
+
     url(r'^admin/', admin.site.urls),
 ]
