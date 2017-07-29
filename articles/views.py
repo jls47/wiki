@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django import forms
 from .forms import ArtModelForm
+from ckeditor.fields import RichTextField
 from django.utils import timezone
 
 # Create your views here.
@@ -32,6 +33,7 @@ def get_edit_page(request, **kwargs):
 def get_write_page(request):
     if request.method == "POST":
         form = ArtModelForm(request.POST)
+        form.body = RichTextField()
         if form.is_valid():
             model_instance = form.save(commit=False)
             model_instance.timestamp = timezone.now()
@@ -39,6 +41,7 @@ def get_write_page(request):
             return redirect('victory')
     else:
         form = ArtModelForm()
+        form.body = RichTextField()
 
     return render(request, "articles/write.html", {'form': form})
 
