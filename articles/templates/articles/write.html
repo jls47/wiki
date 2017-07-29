@@ -10,7 +10,10 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-    {{form}}
+    {{form.as_p}}
+    {{form.media}}
+    <input type="submit"/>
+
 {% endblock %}
 </body>
 </html>

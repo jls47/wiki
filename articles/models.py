@@ -5,7 +5,7 @@ from ckeditor.fields import RichTextField
 class Article(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=200, unique=True)
-    summary = models.TextField(max_length=600)
+    summary = RichTextField('Summary')
     body = RichTextField('Body')
     categories = models.CharField(max_length=600)
     featured = models.BooleanField(default=False)

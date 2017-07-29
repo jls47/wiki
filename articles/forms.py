@@ -8,5 +8,5 @@ class ArtModelForm(forms.ModelForm):
     class Meta:
         model = Article
 
-        fields = '__all__'
+        fields = ('title', 'slug', 'summary', 'body', 'categories',)
         model.body = RichTextField()

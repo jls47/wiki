@@ -33,15 +33,14 @@ def get_edit_page(request, **kwargs):
 def get_write_page(request):
     if request.method == "POST":
         form = ArtModelForm(request.POST)
-        form.body = RichTextField()
         if form.is_valid():
-            model_instance = form.save(commit=False)
+            model_instance = form.save()
             model_instance.timestamp = timezone.now()
             model_instance.save()
-            return redirect('victory')
+            return redirect('frontpage')
     else:
         form = ArtModelForm()
-        form.body = RichTextField()
+
 
     return render(request, "articles/write.html", {'form': form})
 
