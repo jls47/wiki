@@ -20,18 +20,12 @@
     <br><br>
     <p>{{article.summary}}</p>
     <hr>
-    <br><br>
-    <div class = "toc">
-        <ul>
-            <li>{{article.toc}}</li>
-        </ul>
-    </div>
-    <hr>
     <br>
-    <p>{{article.body}}</p>
+    {{article.body|safe}}
 
     <hr>
     <p>{{article.categories}}</p>
+
 
     {% endblock %}
 </body>

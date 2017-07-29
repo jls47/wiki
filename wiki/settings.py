@@ -50,8 +50,16 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'profiles',
     'registration',
-    'articles'
+    'articles',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
+
+CKEDITOR_JQUERY_URL = '//http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'
+
+CKEDITOR_UPLOAD_PATH = "../static/media"
+
+CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

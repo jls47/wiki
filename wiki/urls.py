@@ -19,7 +19,7 @@ from django.contrib.auth import views as auth_views
 from django.conf.urls import include
 
 
-from articles.views import about, get_all_articles, get_one_article, get_create_page, get_featured_articles, get_edit_page, get_talk_page
+from articles.views import about, get_all_articles, get_one_article, get_write_page, get_featured_articles, get_edit_page, get_talk_page
 
 
 urlpatterns = [
@@ -33,10 +33,10 @@ urlpatterns = [
     url(r'^articles/featured/', get_featured_articles),
     url(r'^articles/talk/(?P<pk>\d+)/', get_talk_page),
     url(r'^articles/edit/(?P<pk>\d+)/', get_edit_page),
-    url(r'^articles/create/', get_create_page),
+    url(r'^articles/write/', get_write_page),
     url(r'^articles/(?P<pk>\d+)/', get_one_article),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^articles/all', get_all_articles),
-
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', admin.site.urls),
 ]

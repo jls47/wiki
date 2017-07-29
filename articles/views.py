@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from django import forms
+from .forms import ArtModelForm
+from django.utils import timezone
 
 # Create your views here.
-
 from articles.models import Article
 
 def about(request):
@@ -27,9 +29,19 @@ def get_edit_page(request, **kwargs):
 
     return render(request, 'articles/edit.html', {"article": articles})
 
-def get_create_page(request):
+def get_write_page(request):
+    if request.method == "POST":
+        form = ArtModelForm(request.POST)
+        if form.is_valid():
+            model_instance = form.save(commit=False)
+            model_instance.timestamp = timezone.now()
+            model_instance.save()
+            return redirect('victory')
+    else:
+        form = ArtModelForm()
 
-    return render(request, 'articles/create.html')
+    return render(request, "articles/write.html", {'form': form})
+
 
 def get_featured_articles(request):
     articles = Article.objects.filter(featured=True)
