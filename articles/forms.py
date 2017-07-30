@@ -4,6 +4,8 @@ from ckeditor.fields import RichTextField
 from ckeditor.fields import RichTextFormField
 from .models import Article
 
+
+
 class ArtModelForm(forms.ModelForm):
     class Meta:
         model = Article

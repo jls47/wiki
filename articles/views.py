@@ -3,6 +3,7 @@ from django import forms
 from .forms import ArtModelForm
 from ckeditor.fields import RichTextField
 from django.utils import timezone
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 from articles.models import Article
@@ -31,14 +32,18 @@ def get_edit_page(request, **kwargs):
     return render(request, 'articles/edit.html', {"article": articles})
 
 def get_write_page(request):
+    # if this is a POST request we need to process the form data
     if request.method == "POST":
+        # create a form instance and populate it with data from the request:
         form = ArtModelForm(request.POST)
         if form.is_valid():
+            # check whether it's valid:
             model_instance = form.save()
             model_instance.timestamp = timezone.now()
             model_instance.save()
-            return redirect('frontpage')
+            return HttpResponseRedirect('frontpage')
     else:
+         # if a GET (or any other method) we'll create a blank form
         form = ArtModelForm()
 
 
