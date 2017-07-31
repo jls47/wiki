@@ -5,9 +5,12 @@
     <title></title>
 </head>
 <body>
+{%include "articles/base.html"%}
+
+{% block title %}{% endblock %}
+
+{% block content %}
 <h1>This is an example article page.</h1>
-
-
-
+{% endblock %}
 </body>
 </html>

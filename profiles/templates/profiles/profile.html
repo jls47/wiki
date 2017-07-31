@@ -5,6 +5,12 @@
     <title></title>
 </head>
 <body>
-{{ data.created }}
+{%include "profiles/base.html"%}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+{{data}}
+{% endblock %}
 </body>
 </html>
