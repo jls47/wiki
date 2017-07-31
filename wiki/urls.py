@@ -20,7 +20,7 @@ from django.conf.urls import include
 
 
 from articles.views import about, get_all_articles, get_one_article, get_write_page, get_featured_articles, get_edit_page, get_talk_page
-
+from profiles.views import about, get_one_profile, get_all_profiles, about
 
 urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
@@ -35,6 +35,9 @@ urlpatterns = [
     url(r'^articles/edit/(?P<pk>\d+)/', get_edit_page),
     url(r'^articles/write/', get_write_page),
     url(r'^articles/(?P<pk>\d+)/', get_one_article),
+    url(r'^profiles/all/', get_all_profiles),
+    url(r'^profiles/about/', get_one_profile),
+    url(r'^profiles/(?P<pk>\d+)/', get_one_profile),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^articles/all', get_all_articles),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
