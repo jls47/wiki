@@ -10,7 +10,7 @@ def get_all_profiles(request):
 
     profiles = Profile.objects.all()
 
-    return render(request, 'profiles/profile.html', {"data": profiles})
+    return render(request, 'profiles/all.html', {"data": profiles})
 
 def get_one_profile(request, **kwargs):
     profile = Profile.objects.get(pk=kwargs['pk'])
