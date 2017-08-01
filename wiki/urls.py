@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.conf.urls import include
 from django.conf.urls.static import static
-from djang.conf import settings
+from django.conf import settings
 
 from articles.views import about, get_all_articles, get_one_article, get_write_page, get_featured_articles, get_edit_page, get_talk_page
 from profiles.views import about, get_one_profile, get_all_profiles, about
