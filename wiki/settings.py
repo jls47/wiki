@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
 ]
 
-CKEDITOR_JQUERY_URL = '//http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'
+CKEDITOR_JQUERY_URL = 'http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'
 
 CKEDITOR_UPLOAD_PATH = "../static/media"
 
