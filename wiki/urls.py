@@ -42,4 +42,4 @@ urlpatterns = [
     url(r'^articles/all', get_all_articles),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', admin.site.urls),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

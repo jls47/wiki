@@ -28,7 +28,7 @@ SECRET_KEY = 'jor8aei&1^nz!#&qy1o@&sjr(f)cnz_=ynl#_+ui7mbnfcz1jh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['165.227.16.252', 'localhost', '127.0.0.1']
 
 # Activation window
 
