@@ -33,14 +33,15 @@ def get_edit_page(request, **kwargs):
 
 def get_write_page(request):
     # if this is a POST request we need to process the form data
-    if request.method == "POST":
+    if request.method == "POST" and 'Post' in request.POST:
         # create a form instance and populate it with data from the request:
         form = ArtModelForm(request.POST)
         if form.is_valid():
             # check whether it's valid:
-            model_instance = form.save()
+            model_instance = form.save(commit=False)
             model_instance.timestamp = timezone.now()
             model_instance.save()
+
             return HttpResponseRedirect('frontpage')
     else:
          # if a GET (or any other method) we'll create a blank form

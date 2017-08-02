@@ -10,11 +10,11 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-<form action="/your-name/" method="post">
+<form action="frontpage.html" method="POST">
     {% csrf_token %}
     {{form.as_p}}
     {{form.media}}
-    <input type="submit" value="Submit"/>
+    <input type="submit" value="Publish" class = "submit" name="Post"/>
 </form>
 {% endblock %}
 </body>
