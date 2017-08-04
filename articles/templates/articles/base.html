@@ -20,13 +20,13 @@
 			</div>
 		</div>
 
-		{% if user %}
-        <div class="navbar-right user-infoD">Welcome, <span class="user-fullname">{{user}}</span> <a class="btn btn-default btn-sm" id = "LogoutD" href="{% url 'logout' %}">Logout</a></div>
-        {% else %}
-          <form class="navbar-form navbar-right" role="form" id="loginD">
+		{% if user.is_anonymous %}
+        <form class="navbar-form navbar-right" role="form" id="loginD">
             <a class="btn btn-default btn-sm" id = "LoginD" href="{% url 'login' %}">Login</a>
 			<a class="btn btn-default btn-sm" href="{% url 'signup' %}"  onclick = "ga('send', 'event', 'Create account link', 'Click', 'Success');" id = "createacctD">Create account</a>
           </form>
+        {% else %}
+          <div class="navbar-right user-infoD">Welcome, <span class="user-fullname">{{user}}</span> <a class="btn btn-default btn-sm" id = "LogoutD" href="{% url 'logout' %}">Logout</a></div>
         {% endif %}
 
 		<div class = "navtabs">
