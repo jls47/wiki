@@ -22,7 +22,6 @@
 	height: 100vh;
 }
 
-
 .navtabs{
 	position: absolute;
 	bottom: 0;
@@ -32,7 +31,6 @@
 .featured{
 	background: lightgrey;
 	border: 1px solid lightblue;
-	
 	padding: 5px;
 }
 

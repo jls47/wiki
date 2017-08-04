@@ -7,6 +7,8 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 from articles.models import Article
+from django.contrib.auth import login, authenticate
+from django.shortcuts import render, redirect
 
 def about(request):
     return render(request, 'articles/about.html')
@@ -18,6 +20,7 @@ def get_all_articles(request):
 
 def get_one_article(request, **kwargs):
     articles = Article.objects.get(pk=kwargs['pk'])
+
 
     return render(request, 'articles/articleview.html', {"article": articles})
 
@@ -41,8 +44,9 @@ def get_write_page(request):
             model_instance = form.save(commit=False)
             model_instance.timestamp = timezone.now()
             model_instance.save()
+            print("Page written!  Check it out!")
 
-            return HttpResponseRedirect('frontpage')
+            return redirect('/')
     else:
          # if a GET (or any other method) we'll create a blank form
         form = ArtModelForm()
@@ -60,3 +64,4 @@ def get_front_page(request):
     articles = Article.objects.filter(featured = True)
 
     return render(request, 'articles/frontpage.html', {"articles": articles})
+

@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['165.227.16.252', 'localhost', '127.0.0.1']
 
 ACCOUNT_ACTIVATION_DAYS = 3
 
-LOGIN_REDIRECT_URL = '../articles/templates/articles/frontpage'
+LOGIN_REDIRECT_URL = '/'
 
 
 # Application definition
@@ -49,10 +49,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'profiles',
-    'registration',
+    'accounts',
     'articles',
     'ckeditor',
     'ckeditor_uploader',
+    'django_extensions',
 ]
 
 CKEDITOR_JQUERY_URL = 'http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'

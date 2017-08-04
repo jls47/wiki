@@ -1,5 +1,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 # Create your models here.
 class Article(models.Model):
@@ -15,6 +18,7 @@ class Talk(models.Model):
 
     def __str__(self):
         return self.title
+
 
 
 
