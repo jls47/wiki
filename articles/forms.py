@@ -13,4 +13,5 @@ class ArtModelForm(forms.ModelForm):
 
         fields = ('title', 'slug', 'summary', 'body', 'categories',)
         model.body = RichTextField()
+        model.author = User.username
 

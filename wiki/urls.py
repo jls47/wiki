@@ -20,7 +20,7 @@ from django.conf.urls import include
 from django.conf.urls.static import static
 from django.conf import settings
 
-from articles.views import about, get_all_articles, get_one_article, get_write_page, get_featured_articles, get_edit_page, get_talk_page
+from articles.views import about, get_all_articles, get_one_article, get_write_page, get_featured_articles, get_edit_page, get_talk_page, get_front_page
 from profiles.views import about, get_one_profile, get_all_profiles, about
 from accounts.views import signup
 
@@ -46,5 +46,6 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^register/$', signup, name='signup'),
+    url(r'^articles/frontpage/', get_front_page,  name='frontpage'),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

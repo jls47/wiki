@@ -12,6 +12,8 @@ class Article(models.Model):
     body = RichTextField('Body')
     categories = models.CharField(max_length=600)
     featured = models.BooleanField(default=False)
+    pastFeatured = models.BooleanField(default=False)
+    author = models.CharField(max_length=120)
 
 class Talk(models.Model):
     discussions = models.TextField(max_length=9999999999999999999)
