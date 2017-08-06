@@ -1,0 +1,123 @@
+
+
+#expand{
+	color: white;
+}
+
+#desktopNavbar{
+	height: 150px;
+	width: 100%;
+	right: 100px;
+}
+
+.user-info{
+	color: lightgrey;
+}
+
+.col-height{
+	height: 50px;
+}
+
+.col-haight{
+	height: 100vh;
+}
+
+.navtabs{
+	position: absolute;
+	bottom: 0;
+	left: 50vh;
+}
+
+.content{
+    margin-left: 300px;
+}
+
+.featured{
+	background: lightgrey;
+	border: 1px solid lightblue;
+	padding: 5px;
+}
+
+.ftimage img{
+	height: 100px;
+	float: right;
+	margin-left: 10px;
+}
+
+.dyk{
+	background: lightgrey;
+	border: 1px solid lightblue;
+
+	padding: 5px;
+}
+
+.TOC{
+	background: lightgrey;
+	border: 1px solid lightblue;
+	width: 200px;
+	padding: 5px;
+}
+
+.imagebox{
+	float: right;
+	background: lightgrey;
+	border: 1px solid lightblue;
+	margin-right: 5%;
+	padding: 5px;
+	width: 300px;
+	margin-left: 10px;
+}
+
+.imagebox p{
+	text-align: center;
+}
+
+.map{
+	width: 300px;
+	height: 300px;
+}
+
+.content-footer{
+	background: lightgrey;
+	border: 1px solid lightblue;
+	padding: 7px;
+	width: 344px;
+}
+
+.relatedArts{
+	display: inline;
+	list-style-type: none;
+	padding: 5px;
+}
+
+.related{
+	font-weight: bold;
+	font-style: italic;
+}
+
+.relatedArts li{
+	float: left;
+	padding: 3px;
+
+}
+
+.mainContent{
+	width: 100%;
+	margin-right: 10px;
+}
+
+#map-container{
+	height: 300px;
+	width: 288px;
+}
+
+#sidebar{
+	width: 200px;
+	height: 100%;
+	position: fixed;
+	float: left;
+}
+
+.submit{
+	margin-left: 5vw;
+}
