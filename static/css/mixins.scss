@@ -1,0 +1,7 @@
+@mixin image-box($margin, $padding, $posRight, $posTop, $border){
+  margin: $margin;
+  padding: $padding;
+  right: $postRight;
+  top: $postTop;
+  border: $border;
+}
