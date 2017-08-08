@@ -1,98 +1,100 @@
-<!DOCTYPE html>
-<html>
-    
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-	{% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <!DOCTYPE html>
+    <html>
 
-    <link rel = "stylesheet" type="text/css" href=" {% static 'css/main.css'%} "/>
-    <meta name="viewport" content="width=device-width" />
-</head>
-<body>
-  <div id = "mobileView">
-  <nav class="navbar navbar-default" data-spy = "affix" data-offset-top="50" >
-      <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">DjangoWiki</a>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+
+        <link rel = "stylesheet" type="text/css" href=" {% static 'css/main.css'%} "/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+      <div id = "mobileView">
+      <nav class="navbar navbar-default" data-spy = "affix" data-offset-top="50" >
+          <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">DjangoWiki</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a class="btn btn-default btn-sm" href="#">Main Page</a></li>
+            <li><a class="btn btn-default btn-sm" href="#">Directory</a></li>
+            <li><a class="btn btn-default btn-sm" href="#">Random</a></li>
+            <li><a class="btn btn-default btn-sm" href="#">Write</a></li>
+            <li><a class="btn btn-default btn-sm" href="#">Edit</a></li>
+            <li><a class="btn btn-default btn-sm" href="#">Help</a></li>
+            <li><a class="btn btn-default btn-sm" href="#">Login</a></li>
+            <li><a class="btn btn-default btn-sm" href="#">Create Account</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class=""btn btn-default btn-sm" href="#">Main Page</a></li>
-        <li><a class=""btn btn-default btn-sm" href="#">Directory</a></li>
-        <li><a class=""btn btn-default btn-sm" href="#">Random</a></li>
-        <li><a class=""btn btn-default btn-sm" href="#">Write</a></li>
-        <li><a class=""btn btn-default btn-sm" href="#">Edit</a></li>
-        <li><a class=""btn btn-default btn-sm" href="#">Help</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-</div>
-  <div id = "desktopView">
-	<nav class = "navbar navbar-default" id = "desktopNavbar">
-		<div class = "container">
-			<div class="navbar-header col-md-6 col-height">
-				<a class="navbar-brand" href="#"><img src = "#" style="width:130px;"></a>
+      <div id = "desktopView">
+        <nav class = "navbar navbar-default" id = "desktopNavbar">
+            <div class = "container">
+                <div class="navbar-header col-md-6 col-height">
+                    <a class="navbar-brand" href="#"><img src = "#" style="width:130px;"></a>
 
-			</div>
-		</div>
+                </div>
+            </div>
 
-		{% if user.is_anonymous %}
-        <form class="navbar-form navbar-right" role="form" id="loginD">
-            <a class="btn btn-default btn-sm" id = "LoginD" href="{% url 'login' %}">Login</a>
-			<a class="btn btn-default btn-sm" href="{% url 'signup' %}"  onclick = "ga('send', 'event', 'Create account link', 'Click', 'Success');" id = "createacctD">Create account</a>
-          </form>
-        {% else %}
-          <div class="navbar-right user-infoD">Welcome, <span class="user-fullname">{{user}}</span> <a class="btn btn-default btn-sm" id = "LogoutD" href="{% url 'logout' %}">Logout</a></div>
-        {% endif %}
+            {% if user.is_anonymous %}
+            <form class="navbar-form navbar-right" role="form" id="loginD">
+                <a class="btn btn-default btn-sm" id = "LoginD" href="{% url 'login' %}">Login</a>
+                <a class="btn btn-default btn-sm" href="{% url 'signup' %}"  onclick = "ga('send', 'event', 'Create account link', 'Click', 'Success');" id = "createacctD">Create account</a>
+              </form>
+            {% else %}
+              <div class="navbar-right user-infoD">Welcome, <span class="user-fullname">{{user}}</span> <a class="btn btn-default btn-sm" id = "LogoutD" href="{% url 'logout' %}">Logout</a></div>
+            {% endif %}
 
-		<div class = "navtabs">
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="#" class = "read">Read</a></li>
-			<li><a href="#" class = "talk">Talk</a></li>
-			<li><button class = " btn btn-default btn-sm editAll">Edit <span class = "glyphicon glyphicon-pencil"></span></button></li>
-		</ul>
+            <div class = "navtabs">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#" class = "read">Read</a></li>
+                <li><a href="#" class = "talk">Talk</a></li>
+                <li><button class = " btn btn-default btn-sm editAll">Edit <span class = "glyphicon glyphicon-pencil"></span></button></li>
+            </ul>
 
-		</nav>
-				<form class="navbar-form" role="search" id = "searchBar">
-					<div class="input-group">
-						<input type="text" placeholder="Type keywords here." class="form-control" name="searchText" id = "searchTextD">
-						<div class="input-group-btn">
-							<button type="submit" class="btn btn-primary searchD" name="searchButton"><span class="glyphicon glyphicon-search"></span></button>
-						</div>
-					</div>
-				</form>
-		</div>
+            </nav>
+                    <form class="navbar-form" role="search" id = "searchBar">
+                        <div class="input-group">
+                            <input type="text" placeholder="Type keywords here." class="form-control" name="searchText" id = "searchTextD">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-primary searchD" name="searchButton"><span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
 
-	<div class = "sidebar" id = "desktopView">
-		<div class="col-md-2 col-haight" id="leftCol">
+        <div class = "sidebar" id = "desktopView">
+            <div class="col-md-2 col-haight" id="leftCol">
 
-              	<ul class="nav nav-stacked" id="sidebar">
-                  <li><a href="#">Main Page</a></li>
-                  <li><a href="{% url 'allArts' %}">Directory</a></li>
-                  <li><a href="#">Random</a></li>
-                  <li><a href="{% url 'write' %}">Write</a></li>
-				  <li><a href="#">Help</a></li>
-              	</ul>
+                    <ul class="nav nav-stacked" id="sidebar">
+                      <li><a href="#">Main Page</a></li>
+                      <li><a href="{% url 'allArts' %}">Directory</a></li>
+                      <li><a href="#">Random</a></li>
+                      <li><a href="{% url 'write' %}">Write</a></li>
+                      <li><a href="#">Help</a></li>
+                    </ul>
 
-      		</div>
-		</div>
-	</div>
-  <h1>YOU CAN RETURN ANY DJANGO OBJECT IN HTML</h1>
-  <h1>USE URL OBJECTS FOR LOGIN AND RETURNING TO OLD PAGE</h1>
-  <div class = "content">
-  {% block content %}
+                </div>
+            </div>
+        </div>
+      <h1>YOU CAN RETURN ANY DJANGO OBJECT IN HTML</h1>
+      <h1>USE URL OBJECTS FOR LOGIN AND RETURNING TO OLD PAGE</h1>
+      <div class = "content">
+      {% block content %}
 
-  {% endblock %}
-	  </div>
-  </body>
- <script src="{% static 'scripts/jquery-3.2.1.min.js'%}"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</html>
+      {% endblock %}
+          </div>
+      </body>
+     <script src="{% static 'scripts/jquery-3.2.1.min.js'%}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </html>
