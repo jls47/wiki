@@ -1,6 +1,6 @@
 @media only screen and (max-width: 767px) {
     #mobileView {
-		width: 100vw;
+
     }
 
 	#desktopView{
@@ -22,9 +22,6 @@
 
 	#desktopView{
 
-	}
-	#tvView{
-		display: none;
 	}
 
 
