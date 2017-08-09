@@ -4,8 +4,8 @@ from .forms import ArtModelForm
 from ckeditor.fields import RichTextField
 from django.utils import timezone
 from django.http import HttpResponseRedirect
-
-# Create your views here.
+import operator
+from django.db.models import Q
 from articles.models import Article
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
@@ -65,3 +65,13 @@ def get_front_page(request):
 
     return render(request, 'articles/frontpage.html', {"articles": articles})
 
+def get_search(request):
+    paginate_by = 10
+
+
+    if request.method == "GET":
+        searchquery = request.GET.get('sD')
+    #searchquery = 'e'#request.GET.get('searchTextD')
+    articles = Article.objects.filter(title__icontains=str(searchquery)) #Having trouble getting the actual search text in here
+
+    return render(request, 'articles/search.html', {"articles": articles, "query": searchquery})

@@ -4,11 +4,7 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-
-
-    <h1>{{title}}</h1>
-    <hr>
-    {%for article in articles%}
+{%for article in articles%}
     <p>{{article.title}}</p>
-    {%endfor%}
+{%endfor%}
 {% endblock %}

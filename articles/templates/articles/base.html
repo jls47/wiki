@@ -32,6 +32,14 @@
             <li><a class="btn btn-default btn-sm" href="#">Help</a></li>
             <li><a class="btn btn-default btn-sm" href="#">Login</a></li>
             <li><a class="btn btn-default btn-sm" href="#">Create Account</a></li>
+            <form class="navbar-form" role="search" type="get" id = "searchBar" action="#" method="GET">
+                        <div class="input-group">
+                            <input type="text" placeholder="Type keywords here." class="form-control" name="searchText" id = "searchText">
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary search" id = "search" name="searchButton" value="Click"><span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
+                    </form>
           </ul>
         </div>
       </div>
@@ -62,12 +70,12 @@
                 <li><button class = " btn btn-default btn-sm editAll">Edit <span class = "glyphicon glyphicon-pencil"></span></button></li>
             </ul>
 
-            </nav>
-                    <form class="navbar-form" role="search" id = "searchBar">
+        </nav>
+                    <form class="navbar-form" role="search" type="get" id = "searchBar" action="{% url 'search' %}" method="GET" accept-charset="utf-8">
                         <div class="input-group">
-                            <input type="text" placeholder="Type keywords here." class="form-control" name="searchText" id = "searchTextD">
+                            <input type="text" placeholder="Search" class="form-control" name="sD" id = "searchTextD">
                             <div class="input-group-btn">
-                                <button type="submit" class="btn btn-primary searchD" name="searchButton"><span class="glyphicon glyphicon-search"></span></button>
+                                <button class="btn btn-primary searchD" id = "searchD" name="sBD"><span class="glyphicon glyphicon-search"></span></button>
                             </div>
                         </div>
                     </form>
@@ -88,7 +96,7 @@
             </div>
         </div>
       <h1>YOU CAN RETURN ANY DJANGO OBJECT IN HTML</h1>
-      <h1>USE URL OBJECTS FOR LOGIN AND RETURNING TO OLD PAGE</h1>
+      <h1>USE URL OBJECTS FOR LOGIN AND RETURNING TO OLD PAGE</h1><br><br>
       <div class = "content">
       {% block content %}
 
