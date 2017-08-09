@@ -70,8 +70,11 @@ def get_search(request):
 
 
     if request.method == "GET":
-        searchquery = request.GET.get('sD')
-    #searchquery = 'e'#request.GET.get('searchTextD')
+       if request.GET.get('sD'):
+         searchquery = request.GET.get('sD')
+       elif request.GET.get('sM'):
+         searchquery = request.GET.get('sM')
+
     articles = Article.objects.filter(title__icontains=str(searchquery)) #Having trouble getting the actual search text in here
 
     return render(request, 'articles/search.html', {"articles": articles, "query": searchquery})
