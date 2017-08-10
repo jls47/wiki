@@ -18,19 +18,19 @@ def get_all_articles(request):
 
     return render(request, 'articles/seeall.html', {"articles": articles, "title": "All Articles"})
 
-def get_one_article(request, **kwargs):
-    articles = Article.objects.get(pk=kwargs['pk'])
+def get_one_article(request, slug):
+    articles = Article.objects.get(slug=slug)
 
 
     return render(request, 'articles/articleview.html', {"article": articles})
 
-def get_talk_page(request, **kwargs):
-    talk = Talk.objects.get(pk=kwargs['pk'])
+def get_talk_page(request, slug):
+    talk = Talk.objects.get(slug=slug)
 
     return render(request, 'articles/talk.html', {"talk": talk})
 
-def get_edit_page(request, **kwargs):
-    articles = Article.objects.get(pk=kwargs['pk'])
+def get_edit_page(request, slug):
+    articles = Article.objects.get(slug=slug)
 
     return render(request, 'articles/edit.html', {"article": articles})
 
@@ -41,7 +41,7 @@ def get_write_page(request):
         form = ArtModelForm(request.POST)
         if form.is_valid():
             # check whether it's valid:
-            model_instance = form.save(commit=False)
+            model_instance = form.save()
             model_instance.timestamp = timezone.now()
             model_instance.save()
             print("Page written!  Check it out!")

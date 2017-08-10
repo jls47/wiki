@@ -3,17 +3,21 @@ from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.utils.text import format_lazy, slugify
+from django.utils.translation import pgettext_lazy
+
 
 # Create your models here.
 class Article(models.Model):
     title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(unique=True)
     summary = RichTextField('Summary')
     body = RichTextField('Body')
     categories = models.CharField(max_length=600)
     featured = models.BooleanField(default=False)
     pastFeatured = models.BooleanField(default=False)
     author = models.CharField(max_length=120)
+    editedby = models.CharField(max_length=1000)
 
 class Talk(models.Model):
     discussions = models.TextField(max_length=9999999999999999999)

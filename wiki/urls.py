@@ -34,10 +34,10 @@ urlpatterns = [
         auth_views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
     url(r'^articles/featured/', get_featured_articles, name='featured'),
-    url(r'^articles/talk/(?P<pk>\d+)/', get_talk_page, name='talk'),
-    url(r'^articles/edit/(?P<pk>\d+)/', get_edit_page, name='edit'),
+    url(r'^articles/talk/(?P<slug>[-\w\d]+)/$', get_talk_page, name='talk'),
+    url(r'^articles/edit/(?P<slug>[-\w\d]+)/$', get_edit_page, name='edit'),
     url(r'^articles/write/', get_write_page, name='write'),
-    url(r'^articles/(?P<pk>\d+)/', get_one_article, name='article'),
+    url(r'^articles/single/(?P<slug>[-\w\d]+)/$', get_one_article, name='article'),
     url(r'^profiles/all/', get_all_profiles, name='profiles'),
     url(r'^profiles/about/', get_one_profile, name='profileabout'),
     url(r'^profiles/(?P<pk>\d+)/', get_one_profile, name='profile'),
@@ -46,7 +46,7 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^register/$', signup, name='signup'),
-    url(r'^articles/frontpage/', get_front_page,  name='frontpage'),
+    url(r'^frontpage/', get_front_page,  name='frontpage'),
     url(r'^articles/search/', get_search, name='search'),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
