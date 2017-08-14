@@ -20,7 +20,7 @@ from django.conf.urls import include
 from django.conf.urls.static import static
 from django.conf import settings
 
-from articles.views import about, get_search, get_all_articles, get_one_article, get_write_page, get_featured_articles, get_edit_page, get_talk_page, get_front_page
+from articles.views import about, get_search, get_categories, get_all_articles, get_one_article, get_write_page, get_featured_articles, get_edit_page, get_talk_page, get_front_page
 from profiles.views import about, get_one_profile, get_all_profiles, about
 from accounts.views import signup
 
@@ -48,5 +48,6 @@ urlpatterns = [
     url(r'^register/$', signup, name='signup'),
     url(r'^frontpage/', get_front_page,  name='frontpage'),
     url(r'^articles/search/', get_search, name='search'),
+    url(r'^articles/categories/(?P<category>\d+)/', get_categories, name='category'),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

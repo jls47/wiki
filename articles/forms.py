@@ -14,10 +14,11 @@ class ArtModelForm(forms.ModelForm):
     class Meta:
         model = Article
 
-        fields = ('title', 'summary', 'body', 'categories',)
+        fields = ('title', 'summary', 'body', 'category',)
         model.body = RichTextField()
         model.author = User.username
         model.slug = slugify(model.title)
+
 
     def save(self):
         instance = super(ArtModelForm, self).save(commit=False)

@@ -13,7 +13,7 @@ class Article(models.Model):
     slug = models.SlugField(unique=True)
     summary = RichTextField('Summary')
     body = RichTextField('Body')
-    categories = models.CharField(max_length=600)
+    category = models.CharField(max_length=100)
     featured = models.BooleanField(default=False)
     pastFeatured = models.BooleanField(default=False)
     author = models.CharField(max_length=120)

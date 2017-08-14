@@ -54,6 +54,17 @@ def get_write_page(request):
 
     return render(request, "articles/write.html", {'form': form})
 
+def get_categories(request):
+    paginate_by = 10
+
+
+    if request.method == "GET":
+        cat = request.GET.get('categ')
+    articles = Article.objects.filter(category_icontains=cat)
+
+    return render(request, 'articles/categories.html', {"articles": articles, "category": cat})
+
+
 
 def get_featured_articles(request):
     articles = Article.objects.filter(featured=True)
