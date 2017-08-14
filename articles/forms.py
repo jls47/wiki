@@ -22,7 +22,7 @@ class ArtModelForm(forms.ModelForm):
     def save(self):
         instance = super(ArtModelForm, self).save(commit=False)
         instance.slug = slugify(instance.title)
-        instance.author = User.username
+        instance.author = str(User.username)
         instance.save()
 
         return instance
