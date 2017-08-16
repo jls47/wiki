@@ -9,6 +9,8 @@ from django.db.models import Q
 from articles.models import Article
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
+from django.views.generic.edit import UpdateView
+
 
 def about(request):
     return render(request, 'articles/about.html')
@@ -30,9 +32,19 @@ def get_talk_page(request, slug):
     return render(request, 'articles/talk.html', {"talk": talk})
 
 def get_edit_page(request, slug):
-    articles = Article.objects.get(slug=slug)
+        if request.method == POST and 'Post' in request.POST:
+            form = ArtModelForm(slug, request.POST)
+            if form.is_valid():
+                model_instance = form.save()
+                model_instance.timestamp = timezone.now()
+                model_instance.save()
+                return redirect('/')
+        else:
+            #attempting to create a populated form
+            article = Article.objects.get(slug=slug)
+            form = ArtModelForm(initial={'title': article.title, 'summary': article.summary, 'body': article.body, 'category': article.category})
+            return render(request, "articles/edit.html", {'form': form})
 
-    return render(request, 'articles/edit.html', {"article": articles})
 
 def get_write_page(request):
     # if this is a POST request we need to process the form data
@@ -49,7 +61,7 @@ def get_write_page(request):
             return redirect('/')
     else:
          # if a GET (or any other method) we'll create a blank form
-        form = ArtModelForm()
+        form = ArtModelForm(request.GET)
 
 
     return render(request, "articles/write.html", {'form': form})

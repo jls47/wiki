@@ -4,5 +4,9 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-
+<form action="" method="POST">
+    {{ form.as_p }}
+    {{form.media}}
+    <input type="submit" value = "Update" />
+</form>
 {% endblock %}

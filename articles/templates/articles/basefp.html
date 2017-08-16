@@ -28,7 +28,6 @@
             <li><a class="btn btn-default btn-sm" href="{% url 'allArts' %}">Directory</a></li>
             <li><a class="btn btn-default btn-sm" href="#">Random</a></li>
             <li><a class="btn btn-default btn-sm" href="{% url 'write' %}">Write</a></li>
-            <li><a class="btn btn-default btn-sm" href="{%url 'login'%}">Edit</a></li>
             <li><a class="btn btn-default btn-sm" href="#">Help</a></li>
             {% if user.is_anonymous %}
             <li><a class="btn btn-default btn-sm" href="{% url 'login' %}">Login</a></li>
@@ -72,7 +71,7 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#" class = "read">Read</a></li>
                 <li><a href="#" class = "talk">Talk</a></li>
-                <li><a class = " btn btn-default btn-sm editAll" href="{% url 'login'%}">Edit <span class = "glyphicon glyphicon-pencil"></span></a></li>
+
             </ul>
 
         </nav>

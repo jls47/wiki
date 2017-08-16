@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.conf.urls import include
+from django.conf.urls import *
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -46,7 +46,7 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^register/$', signup, name='signup'),
-    url(r'^frontpage/', get_front_page,  name='frontpage'),
+    url(r'^', get_front_page,  name='frontpage'),
     url(r'^articles/search/', get_search, name='search'),
     url(r'^articles/categories/(?P<category>\d+)/', get_categories, name='category'),
 
