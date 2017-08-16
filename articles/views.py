@@ -67,12 +67,12 @@ def get_edit_page(request, slug): # a doozy.  This is the edit function.  It wor
                 return redirect('/')
         else:
             # Creating a populated series of forms for users to monkey with.
-            article = Article.objects.get(slug=slug)
-            form = ArtModelForm(initial={'title': article.title, 'summary': article.summary, 'body': article.body, 'category': article.category})
-            return render(request, "articles/edit.html", {'form': form})
+            article = Article.objects.get(slug=slug)  #Selecting the article based on slug
+            form = ArtModelForm(initial={'title': article.title, 'summary': article.summary, 'body': article.body, 'category': article.category}) #grabbing the forms
+            return render(request, "articles/edit.html", {'form': form}) #showing the forms
 
 
-def get_categories(request):
+def get_categories(request):  #organizing things categorically
     paginate_by = 10
 
 
@@ -84,17 +84,17 @@ def get_categories(request):
 
 
 
-def get_featured_articles(request):
-    articles = Article.objects.filter(featured=True)
+def get_featured_articles(request):  #Articles that have been featured before
+    articles = Article.objects.filter(pastfeatured=True)
 
     return render(request, 'articles/seeall.html', {"articles": articles, "title": "Featured"})
 
-def get_front_page(request):
+def get_front_page(request): #Article featured right now
     articles = Article.objects.filter(featured = True)
 
     return render(request, 'articles/frontpage.html', {"articles": articles})
 
-def get_search(request):
+def get_search(request): #Searching the db for articles
     paginate_by = 10
 
 
@@ -102,8 +102,8 @@ def get_search(request):
        if request.GET.get('sD'):
          searchquery = request.GET.get('sD')
        elif request.GET.get('sM'):
-         searchquery = request.GET.get('sM')
+         searchquery = request.GET.get('sM')#functionality for both mobile and desktop
 
-    articles = Article.objects.filter(title__icontains=str(searchquery)) #Having trouble getting the actual search text in here
+    articles = Article.objects.filter(title__icontains=str(searchquery)) #search string needs to be a substring of an article title
 
     return render(request, 'articles/search.html', {"articles": articles, "query": searchquery})

@@ -8,7 +8,7 @@ from django.utils.translation import pgettext_lazy
 
 
 # Create your models here.
-class Article(models.Model):
+class Article(models.Model): #All the areas of input that are possible.
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     summary = RichTextField('Summary') # django safe filter
@@ -20,7 +20,7 @@ class Article(models.Model):
     editedby = models.CharField(max_length=1000)
 
 class Talk(models.Model):
-    discussions = models.TextField(max_length=9999999999999999999)
+    discussions = RichTextField()
 
     def __str__(self):
         return self.title
