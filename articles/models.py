@@ -11,7 +11,7 @@ from django.utils.translation import pgettext_lazy
 class Article(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
-    summary = RichTextField('Summary')
+    summary = RichTextField('Summary') # django safe filter
     body = RichTextField('Body')
     category = models.CharField(max_length=100)
     featured = models.BooleanField(default=False)

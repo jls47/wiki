@@ -20,7 +20,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img src="{% static 'images/earth.png'%}" style = "width: 30px;"/></a>
+          <a class="navbar-brand" href="/"><img src="{% static 'images/earth.png'%}" style = "width: 30px;"/></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
@@ -28,7 +28,9 @@
             <li><a class="btn btn-default btn-sm" href="{% url 'allArts' %}">Directory</a></li>
             <li><a class="btn btn-default btn-sm" href="#">Random</a></li>
             <li><a class="btn btn-default btn-sm" href="{% url 'write' %}">Write</a></li>
-            <li><a class="btn btn-default btn-sm" href="{%url 'login'%}">Edit</a></li>
+            {% if article %}
+            <li><a class="btn btn-default btn-sm" href="{%url 'edit' article.slug %}">Edit</a></li>
+            {% endif %}
             <li><a class="btn btn-default btn-sm" href="#">Help</a></li>
             {% if user.is_anonymous %}
             <li><a class="btn btn-default btn-sm" href="{% url 'login' %}">Login</a></li>
@@ -54,7 +56,7 @@
         <nav class = "navbar navbar-default" id = "desktopNavbar">
             <div class = "container">
                 <div class="navbar-header col-md-6 col-height">
-                    <a class="navbar-brand" href="#"><img src = "{% static 'images/earth.png'%}" style="width: 100px;"/></a>
+                    <a class="navbar-brand" href="/"><img src = "{% static 'images/earth.png'%}" style="width: 100px;"/></a>
 
                 </div>
             </div>
@@ -72,7 +74,9 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#" class = "read">Read</a></li>
                 <li><a href="#" class = "talk">Talk</a></li>
-                <li><a class = " btn btn-default btn-sm editAll" href="{% url 'login'%}">Edit <span class = "glyphicon glyphicon-pencil"></span></a></li>
+                {% if article %}
+                <li><a class = " btn btn-default btn-sm editAll" href="{% url 'edit' article.slug%}">Edit<span class = "glyphicon glyphicon-pencil"></span></a></li>
+                {% endif %}
             </ul>
 
         </nav>

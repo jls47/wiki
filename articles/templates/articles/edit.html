@@ -4,9 +4,16 @@
 {% block title %}{% endblock %}
 
 {% block content %}
+{%if user.is_anonymous%}
+    <img src="http://www.reactiongifs.com/wp-content/gallery/no/john-cleese-no.gif"/>
+    <h2>You must create an account before writing or editing.</h2>
+
+{%else%}
 <form action="" method="POST">
+    {% csrf_token %}
     {{ form.as_p }}
     {{form.media}}
     <input type="submit" value = "Update" />
 </form>
+{%endif%}
 {% endblock %}
