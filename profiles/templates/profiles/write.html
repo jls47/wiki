@@ -1,0 +1,19 @@
+
+{%extends "profiles/base.html"%}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+{%if user.is_anonymous%}
+    <img src="http://www.reactiongifs.com/wp-content/gallery/no/john-cleese-no.gif"/>
+    <h2>You shouldn't be here!  This is for users that are creating their profiles!</h2>
+
+{%else%}
+<form action="frontpage.html" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    {{form.media}}
+    <input type="submit" value="Publish" class = "submit" name="Post"/>
+</form>
+{%endif%}
+{% endblock %}

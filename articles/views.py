@@ -51,8 +51,6 @@ def get_write_page(request):  # How to write an article!  This presents authenti
     else:
          # if a GET (or any other method) we'll create a blank form series for the user to populate.
         form = ArtModelForm(request.GET)
-
-
     return render(request, "articles/write.html", {'form': form})
 
 def get_edit_page(request, slug): # a doozy.  This is the edit function.  It works similarly to the create page function, except for the fact that it pulls from existing material.
@@ -72,15 +70,12 @@ def get_edit_page(request, slug): # a doozy.  This is the edit function.  It wor
             return render(request, "articles/edit.html", {'form': form}) #showing the forms
 
 
-def get_categories(request):  #organizing things categorically
+def get_categories(request, category):  #organizing things categorically
     paginate_by = 10
 
+    articles = Article.objects.get(category=category)
 
-    if request.method == "GET":
-        cat = request.GET.get('categ')
-    articles = Article.objects.filter(category_icontains=cat)
-
-    return render(request, 'articles/categories.html', {"articles": articles, "category": cat})
+    return render(request, 'articles/categories.html', {"articles": articles})
 
 
 

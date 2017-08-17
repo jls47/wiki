@@ -1,0 +1,51 @@
+@media only screen and (max-width: 767px) {
+    #mobileView {
+
+    }
+
+	#desktopView{
+		display: none;
+	}
+	#tvView{
+		display: none;
+	}
+
+}
+
+@media only screen and (min-width: 768px)  and (max-width: 1920px){
+    #mobileView {
+		display: none;
+    }
+	.content{
+		margin-left: 300px;
+	}
+
+	#desktopView{
+
+	}
+
+
+	body{
+
+	}
+}
+
+@media only screen and (min-width: 1921px) {
+    #mobileView {
+
+    }
+
+	#desktopView{
+		display: none;
+	}
+
+
+	body{
+		font-size: 300%;
+	}
+
+	.content-footer{
+		width: 700px;
+	}
+
+}

@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from articles.views import about, get_search, get_categories, get_all_articles, get_one_article, get_write_page, get_featured_articles, get_edit_page, get_talk_page, get_front_page
-from profiles.views import about, get_one_profile, get_all_profiles, about
+from profiles.views import about, get_one_profile, get_all_profiles, about, write_profile
 from accounts.views import signup
 
 
@@ -39,8 +39,8 @@ urlpatterns = [
     url(r'^articles/write/', get_write_page, name='write'),
     url(r'^articles/single/(?P<slug>[-\w\d]+)/$', get_one_article, name='article'),
     url(r'^profiles/all/', get_all_profiles, name='profiles'),
-    url(r'^profiles/about/', get_one_profile, name='profileabout'),
-    url(r'^profiles/(?P<pk>\d+)/', get_one_profile, name='profile'),
+    url(r'^profiles/write/', write_profile, name='writeprofile'),
+    url(r'^profiles/(?P<name>\d+)/', get_one_profile, name='profile'),
     url(r'^pages/', include('django.contrib.flatpages.urls'), name='about'),
     url(r'^articles/all', get_all_articles, name='allArts'),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),

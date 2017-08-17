@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-{%include "accounts/base.html"%}
+
+{%extends "accounts/base.html"%}
 
 {% block title %}{% endblock %}
 
 {% block content %}
   <h2>Create an account!</h2>
     <p>Users with accounts can write and edit articles, as well as post on talk pages.</p>
-  <form method="post">
+  <form method="post" action="{% url 'writeprofile' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Sign up</button>
   </form>
 {% endblock %}
-</body>
-</html>

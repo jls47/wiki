@@ -13,7 +13,7 @@ from django.utils.translation import pgettext_lazy
 class ArtModelForm(forms.ModelForm):
     class Meta:
         model = Article
-
+        #form fields the user can actually use
         fields = ('title', 'summary', 'body', 'category',)
         model.body = RichTextField()
         model.author = User.username
