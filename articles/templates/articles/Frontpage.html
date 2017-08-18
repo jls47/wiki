@@ -8,11 +8,13 @@
 How to set up:
 
 [box with featured article title, summary, and link]
-
+{%if article%}
 <div class = "featuredbox">
-
+    <h1>{{article.title}}</h1>
+    <p>{{article.summary}}</p>
+    <a href = "{%url 'article' article.title|slugify%}">Read more...</a>
 </div>
-
+{%endif%}
 [category list]
 
 <div class = "categories">
@@ -22,7 +24,7 @@ How to set up:
 [help directory]
 
 <div class = "help">
-    
+
 </div>
 
 {% endblock %}

@@ -85,9 +85,9 @@ def get_featured_articles(request):  #Articles that have been featured before
     return render(request, 'articles/seeall.html', {"articles": articles, "title": "Featured"})
 
 def get_front_page(request): #Article featured right now
-    articles = Article.objects.filter(featured = True)
+    article = Article.objects.filter(featured = True)
 
-    return render(request, 'articles/frontpage.html', {"articles": articles})
+    return render(request, 'articles/frontpage.html', {"article": article})
 
 def get_search(request): #Searching the db for articles
     paginate_by = 10

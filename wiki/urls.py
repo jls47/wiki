@@ -44,9 +44,9 @@ urlpatterns = [
     url(r'^pages/', include('django.contrib.flatpages.urls'), name='about'),
     url(r'^articles/all', get_all_articles, name='allArts'),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/$', admin.site.urls),
     url(r'^register/$', signup, name='signup'),
-    url(r'^', get_front_page,  name='frontpage'),
+    url(r'^main/', get_front_page,  name='frontpage'),
     url(r'^articles/search/', get_search, name='search'),
     url(r'^articles/categories/(?P<category>\d+)/', get_categories, name='category'),
 
