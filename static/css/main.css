@@ -82,10 +82,12 @@
 
 }
 
-.featured{
+.featuredbox{
 	background: lightgrey;
 	border: 1px solid lightblue;
 	padding: 5px;
+	width: 40vw;
+	margin-bottom: 150px;
 }
 
 .ftimage img{
