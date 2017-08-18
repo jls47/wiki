@@ -9,7 +9,8 @@
     <h2>You shouldn't be here!  This is for users that are creating their profiles!</h2>
 
 {%else%}
-<form action="frontpage.html" method="POST">
+<h3>Tell the site a little something about yourself.  Or leave the form blank!</h3>
+<form action="about.html" method="POST">
     {% csrf_token %}
     {{form.as_p}}
     {{form.media}}

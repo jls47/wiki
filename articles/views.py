@@ -66,7 +66,7 @@ def get_edit_page(request, slug): # a doozy.  This is the edit function.  It wor
         else:
             # Creating a populated series of forms for users to monkey with.
             article = Article.objects.get(slug=slug)  #Selecting the article based on slug
-            form = ArtModelForm(initial={'title': article.title, 'summary': article.summary, 'body': article.body, 'category': article.category}) #grabbing the forms
+            form = ArtModelForm(initial={'title': article.title, 'summary': article.summary, 'body': article.body, 'category': article.category, 'subcategory': article.subcategory}) #grabbing the forms
             return render(request, "articles/edit.html", {'form': form}) #showing the forms
 
 
@@ -80,14 +80,14 @@ def get_categories(request, category):  #organizing things categorically
 
 
 def get_featured_articles(request):  #Articles that have been featured before
-    articles = Article.objects.filter(pastfeatured=True)
+    articles = Article.objects.get(pastfeatured=True)
 
     return render(request, 'articles/seeall.html', {"articles": articles, "title": "Featured"})
 
-def get_front_page(request): #Article featured right now
-    article = Article.objects.filter(featured = True)
-
-    return render(request, 'articles/frontpage.html', {"article": article})
+def get_front_page(request): #Article featured right now, with a list of categories to browse
+    farticle = Article.objects.get(featured = True) #Can only be determined by someone with admin access.  Were this a bigger site, it might be up for a vote or something.
+    articles = Article.objects.all()
+    return render(request, 'articles/frontpage.html', {"farticle": farticle, "articles":articles})
 
 def get_search(request): #Searching the db for articles
     paginate_by = 10
@@ -100,5 +100,6 @@ def get_search(request): #Searching the db for articles
          searchquery = request.GET.get('sM')#functionality for both mobile and desktop
 
     articles = Article.objects.filter(title__icontains=str(searchquery)) #search string needs to be a substring of an article title
-
-    return render(request, 'articles/search.html', {"articles": articles, "query": searchquery})
+    subarticles1 = Article.objects.filter(body__icontains=str(searchquery))
+    subarticles2 = Article.objects.filter(summary__icontains=str(searchquery))
+    return render(request, 'articles/search.html', {"articles": articles, "articlesB": subarticles1, "articlesS": subarticles2, "query": searchquery})

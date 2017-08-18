@@ -14,7 +14,7 @@ class ArtModelForm(forms.ModelForm):
     class Meta:
         model = Article
         #form fields the user can actually use
-        fields = ('title', 'summary', 'body', 'category',)
+        fields = ('title', 'summary', 'body', 'category','subcategory')
         model.body = RichTextField()
         model.author = User.username
         model.slug = slugify(model.title)

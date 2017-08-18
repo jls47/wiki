@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['165.227.16.252', 'wiki.jlukes.co', 'localhost', '127.0.0.1']
 
 ACCOUNT_ACTIVATION_DAYS = 3
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/main'
 
 
 # Application definition

@@ -14,7 +14,7 @@ class ProfModelForm(forms.ModelForm):
     class Meta:
         model = Profile
         #form fields the user can actually use
-        fields = ('name', 'summary',)
+        fields = ('summary',)
 
 
     def save(self):

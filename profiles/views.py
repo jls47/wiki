@@ -34,7 +34,9 @@ def write_profile(request):  # How to write an article!  This presents authentic
         form = ProfModelForm(request.POST)
         if form.is_valid():
             # check whether it's valid.  If so, then send everything off, and set the author field to the current user's username.
+
             model_instance = form.save()
+            model_instance.name = User.username
             model_instance.timestamp = timezone.now()
             model_instance.save() #send the data to the database.  the article is created!
             print("Profile written!  Check it out!")

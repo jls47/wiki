@@ -8,23 +8,26 @@
 How to set up:
 
 [box with featured article title, summary, and link]
-{%if article%}
+{%if farticle%}
 <div class = "featuredbox">
-    <h1>{{article.title}}</h1>
-    <p>{{article.summary}}</p>
-    <a href = "{%url 'article' article.title|slugify%}">Read more...</a>
+    <h3>Currently Featured:</h3>
+    <h1>{{farticle.title}}</h1>
+    <p>{{farticle.summary|safe}}</p>
+    <a href = "#">Read more...</a>
 </div>
 {%endif%}
 [category list]
 
 <div class = "categories">
-
+{%for art in articles %}
+    <p>{{art.category}}</p>
+    {% endfor %}
 </div>
 
 [help directory]
 
 <div class = "help">
-
+    <h3>Need help getting around?  Try the help page to the left!</h3>
 </div>
 
 {% endblock %}

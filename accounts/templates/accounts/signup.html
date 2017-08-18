@@ -6,7 +6,7 @@
 {% block content %}
   <h2>Create an account!</h2>
     <p>Users with accounts can write and edit articles, as well as post on talk pages.</p>
-  <form method="post" action="{% url 'writeprofile' %}">
+  <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Sign up</button>

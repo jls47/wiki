@@ -14,6 +14,7 @@ class Article(models.Model): #All the areas of input that are possible.
     summary = RichTextField('Summary') # django safe filter
     body = RichTextField('Body')
     category = models.CharField(max_length=100)
+    subcategory = models.CharField(max_length = 100)
     featured = models.BooleanField(default=False)
     pastFeatured = models.BooleanField(default=False)
     author = models.CharField(max_length=120)
