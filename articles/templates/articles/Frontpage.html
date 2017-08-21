@@ -13,14 +13,14 @@ How to set up:
     <h3>Currently Featured:</h3>
     <h1>{{farticle.title}}</h1>
     <p>{{farticle.summary|safe}}</p>
-    <a href = "#">Read more...</a>
+    <a href = "{% url 'article' farticle.slug%}">Read more...</a>
 </div>
 {%endif%}
 [category list]
 
 <div class = "categories">
 {%for art in articles %}
-    <p>{{art.category}}</p>
+    <a href = "{% url 'login' %}">{{art.category}}</a> <!-- why are categories not working -->
     {% endfor %}
 </div>
 

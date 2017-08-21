@@ -28,3 +28,20 @@ class ArtModelForm(forms.ModelForm):
 
         return instance
 
+
+class ArtEditForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        #less form fields so that the user can't completely mess with the site
+        fields = ('summary', 'body')
+        model.body = RichTextField()
+        model.author = User.username
+        model.slug = slugify(model.title)
+
+    def save(self):
+        instance = super(ArtModelForm, self).save(commit=False)
+        instance.slug = slugify(instance.title)
+        instance.author = str(User.username)
+        instance.save()
+
+        return instance

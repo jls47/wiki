@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django import forms
-from .forms import ArtModelForm
+from .forms import ArtModelForm, ArtEditForm
 from ckeditor.fields import RichTextField
 from django.utils import timezone
 from django.http import HttpResponseRedirect
@@ -50,7 +50,8 @@ def get_write_page(request):  # How to write an article!  This presents authenti
             return redirect('/')  #back to the front page.
     else:
          # if a GET (or any other method) we'll create a blank form series for the user to populate.
-        form = ArtModelForm(request.GET)
+         article = Article.objects.get(slug='example')
+         form = ArtModelForm(initial={'title': article.title, 'summary': article.summary, 'body': article.body, 'category': article.category, 'subcategory': article.subcategory}) #grabbing the forms
     return render(request, "articles/write.html", {'form': form})
 
 def get_edit_page(request, slug): # a doozy.  This is the edit function.  It works similarly to the create page function, except for the fact that it pulls from existing material.
@@ -66,7 +67,7 @@ def get_edit_page(request, slug): # a doozy.  This is the edit function.  It wor
         else:
             # Creating a populated series of forms for users to monkey with.
             article = Article.objects.get(slug=slug)  #Selecting the article based on slug
-            form = ArtModelForm(initial={'title': article.title, 'summary': article.summary, 'body': article.body, 'category': article.category, 'subcategory': article.subcategory}) #grabbing the forms
+            form = ArtEditForm(initial={'summary': article.summary, 'body': article.body})
             return render(request, "articles/edit.html", {'form': form}) #showing the forms
 
 
@@ -87,6 +88,12 @@ def get_featured_articles(request):  #Articles that have been featured before
 def get_front_page(request): #Article featured right now, with a list of categories to browse
     farticle = Article.objects.get(featured = True) #Can only be determined by someone with admin access.  Were this a bigger site, it might be up for a vote or something.
     articles = Article.objects.all()
+    cats = []
+    for a in articles:
+        if a.category in cats:
+            pass
+        else:
+            cats.append(a.category)
     return render(request, 'articles/frontpage.html', {"farticle": farticle, "articles":articles})
 
 def get_search(request): #Searching the db for articles
