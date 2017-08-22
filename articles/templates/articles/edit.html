@@ -9,7 +9,7 @@
     <h2>You must create an account before writing or editing.</h2>
 
 {%else%}
-<form action="" method="POST">
+<form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     {{form.media}}

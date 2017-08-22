@@ -23,8 +23,9 @@
     {{article.summary|safe}}
     <hr>
     <br>
+    <div class = "artBody">
     {{article.body|safe}}
-
+    </div>
     <hr>
     <p><a href="{% url 'login' %}" name = "categ">{{article.category}}</a><!--Meant to be the category lookup.  Should take users to different portals.  Not working though! -->
     </p>

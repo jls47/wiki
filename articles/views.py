@@ -47,7 +47,7 @@ def get_write_page(request):  # How to write an article!  This presents authenti
             model_instance.save() #send the data to the database.  the article is created!
             print("Page written!  Check it out!")
 
-            return redirect('/')  #back to the front page.
+            return HttpResponseRedirect('/articles/single/%s' % model_instance.slug)  #going to the newly created article!
     else:
          # if a GET (or any other method) we'll create a blank form series for the user to populate.
          article = Article.objects.get(slug='example')
@@ -57,13 +57,13 @@ def get_write_page(request):  # How to write an article!  This presents authenti
 def get_edit_page(request, slug): # a doozy.  This is the edit function.  It works similarly to the create page function, except for the fact that it pulls from existing material.
         article = Article.objects.get(slug = slug) #article object
         if request.method == 'POST':
-            form = ArtModelForm(request.POST, instance=article)
+            form = ArtEditForm(request.POST, instance=article)
             if form.is_valid():
                 model_instance = form.save()
                 model_instance.timestamp = timezone.now()
                 model_instance.editedby += request.user.username #add the current user's username into the edited by field
                 model_instance.save()
-                return redirect('/')
+                return HttpResponseRedirect('/articles/single/%s' % slug)
         else:
             # Creating a populated series of forms for users to monkey with.
             article = Article.objects.get(slug=slug)  #Selecting the article based on slug
