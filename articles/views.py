@@ -11,7 +11,7 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.models import User
-from random import randint
+import random
 
 #This is where just about everything happens for articles.  Here, all requests are routed to the proper html file and the proper db requests are made to populate the pages.
 
@@ -74,16 +74,19 @@ def get_edit_page(request, slug): # a doozy.  This is the edit function.  It wor
 
 
 def get_categories(request, category):  #organizing things categorically
-    paginate_by = 10
-
-    articles = Article.objects.get(category=category)
+    articles = Article.objects.filter(category=category)
 
     return render(request, 'articles/categories.html', {"articles": articles})
+
+def get_subcategories(request, subcategory):  #organizing things categorically
+    articles = Article.objects.filter(subcategory=subcategory)
+
+    return render(request, 'articles/subcategories.html', {"articles": articles})
 
 
 
 def get_featured_articles(request):  #Articles that have been featured before
-    articles = Article.objects.get(pastfeatured=True)
+    articles = Article.objects.filter(pastfeatured=True)
 
     return render(request, 'articles/seeall.html', {"articles": articles, "title": "Featured"})
 
@@ -114,7 +117,9 @@ def get_search(request): #Searching the db for articles
     return render(request, 'articles/search.html', {"articles": articles, "articlesB": subarticles1, "articlesS": subarticles2, "query": searchquery})
 
 def get_random(request):
-    random_idx = randint(0, Article.objects.count() - 1)
-    random_art = Article.objects.all()[random_idx]
+    count = Article.objects.all().count()
+    rand_id = random.randint(0, count-1)
+    random_art = Article.objects.all()[rand_id]
+
 
     return render(request, 'articles/articleview.html', {"articles": random_art})

@@ -5,13 +5,9 @@
 
 {% block content %}
 
-<h2>Found articles within the category:</h2>
+<h2>Found articles within the subcategory:</h2>
     {%for article in articles%}
         <p><a href="{% url 'article' article.title|slugify %}">{{article.title}}</a></p>
     {%endfor%}
 
-<h3>Subcategories that apply to this category:</h3>
-    {%for article in articles%}
-        <p><a href="{%url 'subcategory' article.subcategory %}">{{article.subcategory}}</a></p>
-    {%endfor%}
 {% endblock %}

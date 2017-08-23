@@ -20,7 +20,7 @@ from django.conf.urls import *
 from django.conf.urls.static import static
 from django.conf import settings
 
-from articles.views import artabout, get_random, get_search, get_categories, get_all_articles, get_one_article, get_write_page, get_featured_articles, get_edit_page, get_talk_page, get_front_page
+from articles.views import artabout, get_random, get_search, get_categories, get_subcategories, get_all_articles, get_one_article, get_write_page, get_featured_articles, get_edit_page, get_talk_page, get_front_page
 from profiles.views import profabout, get_one_profile, get_all_profiles, write_profile
 from accounts.views import signup
 
@@ -41,7 +41,7 @@ urlpatterns = [
     url(r'^articles/random/$', get_random, name='random'),
     url(r'^profiles/all/', get_all_profiles, name='profiles'),
     url(r'^profiles/write/', write_profile, name='writeprofile'),
-    url(r'^profiles/(?P<name>\d+)/', get_one_profile, name='profile'),
+    url(r'^profiles/(?P<name>[-\w\d]+)/', get_one_profile, name='profile'),
     url(r'^pages/', include('django.contrib.flatpages.urls'), name='about'),
     url(r'^articles/all', get_all_articles, name='allArts'),
     url(r'^articles/about', artabout, name='help'),
@@ -50,6 +50,7 @@ urlpatterns = [
     url(r'^register/$', signup, name='signup'),
     url(r'^$', get_front_page,  name='frontpage'),
     url(r'^articles/search/', get_search, name='search'),
-    url(r'^articles/categories/(?P<category>\d+)/', get_categories, name='category'),
+    url(r'^articles/categories/(?P<category>[-\w\d]+)/', get_categories, name='category'),
+    url(r'^articles/subcategories/(?P<subcategory>[-\w\d]+)/', get_subcategories, name='subcategory')
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
