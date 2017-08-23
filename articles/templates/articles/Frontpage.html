@@ -19,15 +19,16 @@ How to set up:
 [category list]
 
 <div class = "categories">
+    <h1>Portals for: </h1>
 {%for art in articles %}
-    <a href = "{% url 'login' %}">{{art.category}}</a> <!-- why are categories not working -->
+    <p><a href = "{% url 'category' art.category%}">{{art.category}}</a></p> <!-- why are categories not working -->
     {% endfor %}
 </div>
 
 [help directory]
 
 <div class = "help">
-    <h3>Need help getting around?  Try the help page to the left!</h3>
+    <h3>Need help getting around?  Try the <a href="{% url 'help' %}"help page to the left!</h3>
 </div>
 
 {% endblock %}

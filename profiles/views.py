@@ -13,7 +13,7 @@ from django.views.generic.edit import UpdateView
 from django.contrib.auth.models import User
 from profiles.models import Profile
 
-def about(request):
+def profabout(request):
     return render(request, 'profiles/about.html')
 
 def get_all_profiles(request):

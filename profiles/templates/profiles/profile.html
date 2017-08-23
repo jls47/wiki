@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-{%include "profiles/base.html"%}
+
+{%extends "profiles/base.html"%}
 
 {% block title %}{% endblock %}
 
 {% block content %}
 {{profile.name}}
-
+<div class="profSum">
 {{profile.summary}}
-
+</div>
+<div class="workedOn">
 {{profile.edited}}
 
 {{profile.created}}
+    </div>
 {% endblock %}
-</body>
-</html>

@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 
 #This is where just about everything happens for articles.  Here, all requests are routed to the proper html file and the proper db requests are made to populate the pages.
 
-def about(request):
+def artabout(request):
     return render(request, 'articles/about.html') #This is returning the about.html thingy.
 
 def get_all_articles(request):
@@ -50,7 +50,7 @@ def get_write_page(request):  # How to write an article!  This presents authenti
             return HttpResponseRedirect('/articles/single/%s' % model_instance.slug)  #going to the newly created article!
     else:
          # if a GET (or any other method) we'll create a blank form series for the user to populate.
-         article = Article.objects.get(slug='example')
+         article = Article.objects.get(slug='your-title-here')
          form = ArtModelForm(initial={'title': article.title, 'summary': article.summary, 'body': article.body, 'category': article.category, 'subcategory': article.subcategory}) #grabbing the forms
     return render(request, "articles/write.html", {'form': form})
 
@@ -61,6 +61,7 @@ def get_edit_page(request, slug): # a doozy.  This is the edit function.  It wor
             if form.is_valid():
                 model_instance = form.save()
                 model_instance.timestamp = timezone.now()
+                model_instance.editedtime += timezone.now() #With this and the editedby field, admins should be able to track who edited what at what time
                 model_instance.editedby += request.user.username #add the current user's username into the edited by field
                 model_instance.save()
                 return HttpResponseRedirect('/articles/single/%s' % slug)
@@ -94,7 +95,7 @@ def get_front_page(request): #Article featured right now, with a list of categor
             pass
         else:
             cats.append(a.category)
-    return render(request, 'articles/frontpage.html', {"farticle": farticle, "articles":articles})
+    return render(request, 'articles/frontpage.html', {"farticle": farticle, "articles":articles, "category": cats})
 
 def get_search(request): #Searching the db for articles
     paginate_by = 10

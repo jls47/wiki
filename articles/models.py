@@ -18,7 +18,8 @@ class Article(models.Model): #All the areas of input that are possible.
     featured = models.BooleanField(default=False)
     pastFeatured = models.BooleanField(default=False)
     author = models.CharField(max_length=120)
-    editedby = models.CharField(max_length=1000)
+    editedby = models.CharField(max_length=999999999999)
+    editedtime = models.CharField(max_length=999999999999)
 
 class Talk(models.Model):
     discussions = RichTextField()

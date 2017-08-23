@@ -6,8 +6,19 @@
 {% block content %}
 
 {% if articles %}
-    <h2>Found articles matching or containing the search term:</h2>
+    <h2>Found articles matching or containing the search term</h2>
+    <h3>In title:</h3>
     {%for article in articles%}
+        <p><a href="{% url 'article' article.title|slugify %}">{{article.title}}</a></p>
+    {%endfor%}
+
+    <h3>In summary: </h3>
+    {%for article in articlesS%}
+        <p><a href="{% url 'article' article.title|slugify %}">{{article.title}}</a></p>
+    {%endfor%}
+
+    <h3>In body: </h3>
+    {%for article in articlesB%}
         <p><a href="{% url 'article' article.title|slugify %}">{{article.title}}</a></p>
     {%endfor%}
 {% else %}

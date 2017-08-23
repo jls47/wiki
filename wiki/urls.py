@@ -20,8 +20,8 @@ from django.conf.urls import *
 from django.conf.urls.static import static
 from django.conf import settings
 
-from articles.views import about, get_search, get_categories, get_all_articles, get_one_article, get_write_page, get_featured_articles, get_edit_page, get_talk_page, get_front_page
-from profiles.views import about, get_one_profile, get_all_profiles, about, write_profile
+from articles.views import artabout, get_search, get_categories, get_all_articles, get_one_article, get_write_page, get_featured_articles, get_edit_page, get_talk_page, get_front_page
+from profiles.views import profabout, get_one_profile, get_all_profiles, write_profile
 from accounts.views import signup
 
 
@@ -43,6 +43,8 @@ urlpatterns = [
     url(r'^profiles/(?P<name>\d+)/', get_one_profile, name='profile'),
     url(r'^pages/', include('django.contrib.flatpages.urls'), name='about'),
     url(r'^articles/all', get_all_articles, name='allArts'),
+    url(r'^articles/about', artabout, 'article_help'),
+    url(r'^profiles/about', profabout, 'profile_help'),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^register/$', signup, name='signup'),
