@@ -5,6 +5,8 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.utils.text import format_lazy, slugify
 from django.utils.translation import pgettext_lazy
+from random import randint
+from django.db.models.aggregates import Count
 
 
 # Create your models here.
@@ -27,6 +29,12 @@ class Talk(models.Model):
     def __str__(self):
         return self.title
 
+class RandomArt(models.Manager):
+    def random(self):
+        count = self.aggregate(count=Count('slug'))['count']
+        random_index = randint(0, count-1)
+        print(self.all()[random_index])
+        return self.all()[random_index]
 
 
 

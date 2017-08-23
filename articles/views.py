@@ -6,11 +6,12 @@ from django.utils import timezone
 from django.http import HttpResponseRedirect
 import operator
 from django.db.models import Q
-from articles.models import Article
+from articles.models import Article, RandomArt
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.models import User
+from random import randint
 
 #This is where just about everything happens for articles.  Here, all requests are routed to the proper html file and the proper db requests are made to populate the pages.
 
@@ -111,3 +112,9 @@ def get_search(request): #Searching the db for articles
     subarticles1 = Article.objects.filter(body__icontains=str(searchquery))
     subarticles2 = Article.objects.filter(summary__icontains=str(searchquery))
     return render(request, 'articles/search.html', {"articles": articles, "articlesB": subarticles1, "articlesS": subarticles2, "query": searchquery})
+
+def get_random(request):
+    random_idx = randint(0, Article.objects.count() - 1)
+    random_art = Article.objects.all()[random_idx]
+
+    return render(request, 'articles/articleview.html', {"articles": random_art})
