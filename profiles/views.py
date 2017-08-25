@@ -11,7 +11,8 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.models import User
-from profiles.models import Profile
+from .models import Profile
+
 
 def profabout(request):
     return render(request, 'profiles/about.html')
@@ -20,11 +21,12 @@ def get_all_profiles(request):
 
     profiles = Profile.objects.all()
 
-    return render(request, 'profiles/all.html', {"data": profiles})
+    return render(request, 'profiles/all.html', {"profile": profiles})
 
 def get_one_profile(request, name):
-    profile = Profile.objects.get(name=name)
 
+    profile = Profile.objects.get(name=name)
+    raise Exception()
     return render(request, 'profiles/profile.html', {"profile": profile})
 
 def write_profile(request):  # How to write an article!  This presents authenticated users with a series of forms that represent different sections of an article.
@@ -40,7 +42,8 @@ def write_profile(request):  # How to write an article!  This presents authentic
             model_instance.timestamp = timezone.now()
             model_instance.save() #send the data to the database.  the article is created!
             print("Profile written!  Check it out!")
-
+            import pdb
+            pdb.set_trace()
             return redirect('/')  #back to the front page.
     else:
          # if a GET (or any other method) we'll create a blank form series for the user to populate.

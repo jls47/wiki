@@ -25,9 +25,9 @@ def get_all_articles(request):
 
 def get_one_article(request, slug):
     articles = Article.objects.get(slug=slug)  #Returning an article based on a criteria of a slug.  A slug is a title in lowercase with dashes instead of spaces in this case, that can be used as a url parameter.
-
-
-    return render(request, 'articles/articleview.html', {"article": articles})
+    catArticles = Article.objects.filter(category=articles.category)
+    subCatArticles = Article.objects.filter(subcategory=articles.subcategory)
+    return render(request, 'articles/articleview.html', {"article": articles, "cats": catArticles, "subCats": subCatArticles})
 
 def get_talk_page(request, slug):
     talk = Talk.objects.get(slug=slug)  #Ditto, basically a forum page type thing.
@@ -121,5 +121,4 @@ def get_random(request):
     rand_id = random.randint(0, count-1)
     random_art = Article.objects.all()[rand_id]
 
-
-    return render(request, 'articles/articleview.html', {"articles": random_art})
+    return render(request, 'articles/articleview.html', {"article": random_art, 'slug': random_art.slug})

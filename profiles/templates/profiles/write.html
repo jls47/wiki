@@ -10,7 +10,7 @@
 
 {%else%}
 <h3>Tell the site a little something about yourself.  Or leave the form blank!</h3>
-<form action="about.html" method="POST">
+<form method="POST">
     {% csrf_token %}
     {{form.as_p}}
     {{form.media}}

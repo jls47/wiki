@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-{%include "profiles/base.html"%}
+
+{%extends "profiles/base.html"%}
 
 {% block title %}{% endblock %}
 
 {% block content %}
-{{data}}
+{%for profile in profiles%}
+    <p><a href="{% url 'profile' profile.name %}">{{profile.name}}</a></p>
+    {%endfor%}
 {% endblock %}
-</body>
-</html>

@@ -4,7 +4,7 @@
     {%block content%}
     <h1>{{user.username}}</h1>
     <h1>{{article.title}}</h1>
-    <h3>{{article.author}}!</h3>
+    <h3>Written by <a href="{% url 'profile' article.author %}">{{article.author}}</a></h3>
     <br>
     <p>This article has
         {% if article.featured %}
@@ -21,8 +21,8 @@
     {{article.body|safe}}
     </div>
     <hr>
-    <p><a href="{% url 'login' %}" name = "categ">{{article.category}}</a><!--Meant to be the category lookup.  Should take users to different portals.  Not working though! -->
-    </p>
+
+
 
 
     {% endblock %}

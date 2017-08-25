@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'profiles',
     'accounts',
+    'wiki',
     'articles',
     'ckeditor',
     'ckeditor_uploader',
