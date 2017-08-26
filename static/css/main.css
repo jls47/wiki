@@ -2,6 +2,14 @@
     #mobileView {
 
     }
+	.categorybox{
+
+		background: lightgrey;
+		border: 1px solid lightblue;
+
+		padding: 5px;
+		width: 100vw;
+	}
 
 	#desktopView{
 		display: none;
@@ -110,14 +118,13 @@
 	padding: 5px;
 }
 
-.imagebox{
-	float: right;
+.categorybox{
+
 	background: lightgrey;
 	border: 1px solid lightblue;
-	margin-right: 5%;
+
 	padding: 5px;
-	width: 300px;
-	margin-left: 10px;
+	width: 30vw;
 }
 
 .imagebox p{

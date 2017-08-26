@@ -26,7 +26,7 @@ def get_all_profiles(request):
 def get_one_profile(request, name):
 
     profile = Profile.objects.get(name=name)
-    raise Exception()
+
     return render(request, 'profiles/profile.html', {"profile": profile})
 
 def write_profile(request):  # How to write an article!  This presents authenticated users with a series of forms that represent different sections of an article.
@@ -36,15 +36,14 @@ def write_profile(request):  # How to write an article!  This presents authentic
         form = ProfModelForm(request.POST)
         if form.is_valid():
             # check whether it's valid.  If so, then send everything off, and set the author field to the current user's username.
-
+            User = request.user
             model_instance = form.save()
             model_instance.name = User.username
             model_instance.timestamp = timezone.now()
             model_instance.save() #send the data to the database.  the article is created!
             print("Profile written!  Check it out!")
-            import pdb
-            pdb.set_trace()
-            return redirect('/')  #back to the front page.
+
+            return HttpResponseRedirect('/')  #back to the front page.
     else:
          # if a GET (or any other method) we'll create a blank form series for the user to populate.
         form = ProfModelForm(request.GET)

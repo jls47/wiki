@@ -23,6 +23,12 @@
     <hr>
 
 
+    <div class = "categorybox">
+        <p>See other articles in <a href = "{% url 'category' article.category %}">{{article.category}}</a></p>
+
+        <p><a href = "{% url 'subcategory' article.subcategory %}">{{article.subcategory}}</a>:</p>
+    </div>
+
 
 
     {% endblock %}

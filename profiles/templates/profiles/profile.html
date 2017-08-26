@@ -4,9 +4,9 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-{{profile.name}}
+<h1>{{profile.name}}</h1>
 <div class="profSum">
-{{profile.summary}}
+{{profile.summary|safe}}
 </div>
 <div class="workedOn">
 {{profile.edited}}
