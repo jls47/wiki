@@ -13,5 +13,6 @@
 <h3>Subcategories that apply to this category:</h3>
     {%for article in articles%}
         <p><a href="{%url 'subcategory' article.subcategory %}">{{article.subcategory}}</a></p>
+
     {%endfor%}
 {% endblock %}

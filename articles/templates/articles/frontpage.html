@@ -20,8 +20,9 @@ How to set up:
 
 <div class = "categories">
     <h1>Portals for: </h1>
-{%for art in articles %}
-    <p><a href = "{% url 'category' art.category %}">{{art.category}}</a></p> <!-- why are categories not working -->
+{%for art in cats %}
+    <p><a href = "{% url 'category' art.article.category %}">{{art.article.category}}</a></p> <!-- why are categories not working -->
+
     {% endfor %}
 </div>
 

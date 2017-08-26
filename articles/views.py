@@ -26,13 +26,14 @@ def get_all_articles(request):
 def get_one_article(request, slug):
     articles = Article.objects.get(slug=slug)  #Returning an article based on a criteria of a slug.  A slug is a title in lowercase with dashes instead of spaces in this case, that can be used as a url parameter.
     catArticles = Article.objects.filter(category=articles.category)
-    subCatArticles = Article.objects.filter(subcategory=articles.subcategory)
+    sub = articles.subcategory
+    subCatArticles = Article.objects.filter(subcategory=sub)
     return render(request, 'articles/articleview.html', {"article": articles, "cats": catArticles, "subCats": subCatArticles})
 
 def get_talk_page(request, slug):
-    talk = Talk.objects.get(slug=slug)  #Ditto, basically a forum page type thing.
+    #talk = Talk.objects.get(slug=slug)  #Ditto, basically a forum page type thing.
 
-    return render(request, 'articles/talk.html', {"talk": talk})
+    return render(request, 'articles/talk.html')
 
 def get_write_page(request):  # How to write an article!  This presents authenticated users with a series of forms that represent different sections of an article.
     # if this is a POST request we need to process the form data that's there and send it off.
@@ -98,7 +99,7 @@ def get_front_page(request): #Article featured right now, with a list of categor
         if a.category in cats:
             pass
         else:
-            cats.append(a.category)
+            cats.append(a)
     return render(request, 'articles/frontpage.html', {"farticle": farticle, "articles":articles, "category": cats})
 
 def get_search(request): #Searching the db for articles

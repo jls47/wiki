@@ -2,7 +2,7 @@
     {%extends "articles/base.html"%}
 
     {%block content%}
-    <h1>{{user.username}}</h1>
+
     <h1>{{article.title}}</h1>
     <h3>Written by <a href="{% url 'profile' article.author %}">{{article.author}}</a></h3>
     <br>
@@ -26,7 +26,10 @@
     <div class = "categorybox">
         <p>See other articles in <a href = "{% url 'category' article.category %}">{{article.category}}</a></p>
 
-        <p><a href = "{% url 'subcategory' article.subcategory %}">{{article.subcategory}}</a>:</p>
+        <p>Other articles in <a href = "{% url 'subcategory' article.subcategory %}">{{article.subcategory}}</a>:</p>
+        {% for sub in subCats %}
+            <a href="{% url 'subcategory' sub.slug %}">{{sub.title}}</a>
+        {% endfor %}
     </div>
 
 
