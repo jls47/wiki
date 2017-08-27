@@ -11,6 +11,7 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.models import User
+from profiles.models import Profile
 import random
 
 #This is where just about everything happens for articles.  Here, all requests are routed to the proper html file and the proper db requests are made to populate the pages.
@@ -45,8 +46,13 @@ def get_write_page(request):  # How to write an article!  This presents authenti
             form.author = User.username
             model_instance = form.save()
             model_instance.timestamp = timezone.now()
+            model_instance.category = model_instance.category.lower()
+            model_instance.subcategory = model_instance.subcategory.lower()
             model_instance.author = request.user.username #add the current user's username to the author field
             model_instance.save() #send the data to the database.  the article is created!
+            profile = Profile.objects.get(name = model_instance.author)
+            profile.created += model_instance.title
+            profile.save()
             print("Page written!  Check it out!")
 
             return HttpResponseRedirect('/articles/single/%s' % model_instance.slug)  #going to the newly created article!
@@ -60,11 +66,14 @@ def get_edit_page(request, slug): # a doozy.  This is the edit function.  It wor
         article = Article.objects.get(slug = slug) #article object
         if request.method == 'POST':
             form = ArtEditForm(request.POST, instance=article)
+            author = article.author
             if form.is_valid():
                 model_instance = form.save()
+                model_instance.author = author
                 model_instance.timestamp = timezone.now()
-                model_instance.editedtime += timezone.now() #With this and the editedby field, admins should be able to track who edited what at what time
-                model_instance.editedby += request.user.username #add the current user's username into the edited by field
+                model_instance.editedtime += str(timezone.now()) #With this and the editedby field, admins should be able to track who edited what at what time
+                model_instance.editedby = request.user.username #add the current user's username into the edited by field
+
                 model_instance.save()
                 return HttpResponseRedirect('/articles/single/%s' % slug)
         else:
@@ -94,13 +103,9 @@ def get_featured_articles(request):  #Articles that have been featured before
 def get_front_page(request): #Article featured right now, with a list of categories to browse
     farticle = Article.objects.get(featured = True) #Can only be determined by someone with admin access.  Were this a bigger site, it might be up for a vote or something.
     articles = Article.objects.all()
-    cats = []
-    for a in articles:
-        if a.category in cats:
-            pass
-        else:
-            cats.append(a)
-    return render(request, 'articles/frontpage.html', {"farticle": farticle, "articles":articles, "category": cats})
+
+    categories = set([a.category for a in articles])
+    return render(request, 'articles/frontpage.html', {"farticle": farticle, "categories": categories})
 
 def get_search(request): #Searching the db for articles
     paginate_by = 10

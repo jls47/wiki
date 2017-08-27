@@ -37,7 +37,16 @@
 	border: 1px solid lightblue;
 	padding: 5px;
 	width: 60vw;
-	margin-bottom: 150px;
+	margin-bottom: 50px;
+}
+
+.categories{
+	width: 70vw;
+}
+
+.catList{
+	display: inline-block;
+	float: left;
 }
 
 .ftimage img{

@@ -16,17 +16,19 @@ How to set up:
     <a href = "{% url 'article' farticle.slug%}">Read more...</a>
 </div>
 {%endif%}
-[category list]
+<br><hr><br>
 
 <div class = "categories">
     <h1>Portals for: </h1>
-{%for art in cats %}
-    <p><a href = "{% url 'category' art.article.category %}">{{art.article.category}}</a></p> <!-- why are categories not working -->
-
-    {% endfor %}
+        {%for cat in categories %}
+        <div class="catlist">
+            <h4><a href = "{% url 'category' cat %}">{{cat}}</a></h4>
+        </div>
+        {% endfor %}
 </div>
 
-[help directory]
+<br><br><hr><br>
+
 
 <div class = "help">
     <h3>Need help getting around?  Try the help page to the left!</h3>
