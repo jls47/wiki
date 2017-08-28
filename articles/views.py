@@ -51,7 +51,7 @@ def get_write_page(request):  # How to write an article!  This presents authenti
             model_instance.author = request.user.username #add the current user's username to the author field
             model_instance.save() #send the data to the database.  the article is created!
             profile = Profile.objects.get(name = model_instance.author)
-            profile.created += model_instance.title
+            profile.created += ( " '" + model_instance.title + "', ")
             profile.save()
             print("Page written!  Check it out!")
 
@@ -73,8 +73,15 @@ def get_edit_page(request, slug): # a doozy.  This is the edit function.  It wor
                 model_instance.timestamp = timezone.now()
                 model_instance.editedtime += str(timezone.now()) #With this and the editedby field, admins should be able to track who edited what at what time
                 model_instance.editedby = request.user.username #add the current user's username into the edited by field
-
                 model_instance.save()
+                cuser = request.user
+                profile = Profile.objects.get(name = cuser.username)
+                if model_instance.title in profile.edited:
+                    pass
+                else:
+                    profile.edited += ( " '" + model_instance.title + "', ")
+                print(profile.edited)
+                profile.save()
                 return HttpResponseRedirect('/articles/single/%s' % slug)
         else:
             # Creating a populated series of forms for users to monkey with.

@@ -11,6 +11,7 @@ class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=250, help_text="Email address required.")
     confirm_email = forms.EmailField(max_length=250, help_text="Confirm email address.")
 
+
     class Meta:
         model = User
         fields = ('username', 'first_name', 'email', 'confirm_email')

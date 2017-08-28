@@ -9,8 +9,10 @@
 {{profile.summary|safe}}
 </div>
 <div class="workedOn">
-{{profile.edited}}
+   <h3>Edited by {{profile.name}}:</h3>
+   {{profile.edited}}
 
-{{profile.created}}
+    <h3>Created by {{profile.name}}:</h3>
+    {{profile.created}}
     </div>
 {% endblock %}

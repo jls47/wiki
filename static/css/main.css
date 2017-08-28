@@ -1,5 +1,7 @@
 
 
+
+
 #expand{
 	color: white;
 }
@@ -32,6 +34,26 @@
 	width: 100%;
 }
 
+.content img{
+	float: left;
+}
+
+h1{
+	font-family: serif;
+}
+
+h2{
+	font-family: serif;
+}
+
+h3{
+	font-family: serif;
+}
+
+h4{
+	font-family: serif;
+}
+
 .featuredbox{
 	background: lightgrey;
 	border: 1px solid lightblue;
@@ -49,18 +71,7 @@
 	float: left;
 }
 
-.ftimage img{
-	height: 100px;
-	float: right;
-	margin-left: 10px;
-}
 
-.dyk{
-	background: lightgrey;
-	border: 1px solid lightblue;
-
-	padding: 5px;
-}
 
 .TOC{
 	background: lightgrey;
@@ -162,7 +173,30 @@ div.artBody div{
 
 }
 
-@media only screen and (min-width: 768px)  and (max-width: 1920px){
+@media only screen and (min-width: 768px)  and (max-width: 1025px){
+    #mobileView {
+		display: none;
+    }
+	.content{
+		margin-left: 300px;
+		width: 50vw;
+	}
+
+	#earth img{
+		margin-left: 200px;
+	}
+
+	#desktopView{
+
+	}
+
+
+	body{
+
+	}
+}
+
+@media only screen and (min-width: 1025px)  and (max-width: 1920px){
     #mobileView {
 		display: none;
     }

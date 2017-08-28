@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+
 {%extends "articles/base.html"%}
 
 {% block title %}{% endblock %}
@@ -19,12 +13,16 @@
 <p>To write an article, find the "write" link either to the left (desktop) or in the dropdown menu (mobile). In the
     example page, there's a whole bunch of example text.  Feel free to expand upon or subtract from this
     as you wish.</p>
+<p>Within the article, you can actually bring in images and customize them!  Just link externally and please put them in the main body only unless you're going to be having a long summary.</p>
 <p>You might notice the links in grey and the flags in the body.  These are links and anchors, respectively, and can be found in the text editor
     at the chain icon and the flag icon respectively.  You have to set up flags before you can create links within the page.  When creating links,
     always direct them towards anchors in the page.  You can name these anchors and links as you please, so long as they fit together.</p>
 <p>When creating categories and subcategories, make them logical, and try to think about where other users might expect to find them.  If,
     for example, you were to write an article about Charles Darwin, try making the category Biology and the subcategory Biologists, so that
     the article might be found in the proper portal instead of having users resort to guesswork to find articles.  Directories help!</p>
+
+<p>In order to make comments, do so in the source mode with < !-- text in between these brackets and dashes. -->.  Just remove the space between the < and the !.  It's
+primitive, but it works.</p>
 
 <hr>
 <br><br>
@@ -33,5 +31,3 @@
 <p>Writing a profile is as simple as writing a short summary.  This will be displayed along with your username and the pages you've created and edited.</p>
 
 {% endblock %}
-</body>
-</html>
