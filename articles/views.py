@@ -92,8 +92,8 @@ def get_edit_page(request, slug): # a doozy.  This is the edit function.  It wor
 
 def get_categories(request, category):  #organizing things categorically
     articles = Article.objects.filter(category=category)
-
-    return render(request, 'articles/categories.html', {"articles": articles})
+    sub = set([a.subcategory for a in articles])
+    return render(request, 'articles/categories.html', {"articles": articles, "sub": sub})
 
 def get_subcategories(request, subcategory):  #organizing things categorically
     articles = Article.objects.filter(subcategory=subcategory)
@@ -112,6 +112,7 @@ def get_front_page(request): #Article featured right now, with a list of categor
     articles = Article.objects.all()
 
     categories = set([a.category for a in articles])
+    print(categories)
     return render(request, 'articles/frontpage.html', {"farticle": farticle, "categories": categories})
 
 def get_search(request): #Searching the db for articles

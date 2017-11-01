@@ -11,8 +11,8 @@
     {%endfor%}
 
 <h3>Subcategories that apply to this category:</h3>
-    {%for article in articles%}
-        <p><a href="{%url 'subcategory' categories %}">{{categories}}</a></p>
+    {%for s in sub%}
+        <p><a href="{%url 'subcategory' s|slugify %}">{{s}}</a></p>
 
     {%endfor%}
 {% endblock %}
