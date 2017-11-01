@@ -28,7 +28,7 @@ SECRET_KEY = 'jor8aei&1^nz!#&qy1o@&sjr(f)cnz_=ynl#_+ui7mbnfcz1jh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['165.227.16.252', 'wiki.jlukes.co', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['165.227.16.252:80', '188.95.251.28:80', 'wiki.jlukes.co', 'localhost', '127.0.0.1']
 
 # Activation window
 
@@ -75,6 +75,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = True
+
 ROOT_URLCONF = 'wiki.urls'
 
 TEMPLATES = [
@@ -94,6 +98,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'wiki.wsgi.application'
+
+
+
+
+
 
 
 # Database
